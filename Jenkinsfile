@@ -6,6 +6,11 @@ pipeline{
                 bat "gradlew assembleRelease"
              }
         }
+        stage('install') {
+            steps {
+                bat "mvn install -"
+            }
+        }
 
     }
 
