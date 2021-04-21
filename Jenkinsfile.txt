@@ -2,8 +2,8 @@ pipeline{
     stages {
         stage('Build'){
              steps {
-                sh './gradlew clean && rm -rf ./app/build/' 
-                sh './gradlew assembleRelease'  
+                bat "git clone https://github.com/supernewbie1979/cg_example.git"
+                bat "gradlew assembleRelease"
              }
         }
 
