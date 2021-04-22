@@ -1,3 +1,9 @@
+
+environment {
+  APP_NAME = "test"
+  BUILD_TYPE = "debug"
+}
+
 pipeline{
 	agent any
 	
