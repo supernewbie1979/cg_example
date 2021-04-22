@@ -50,13 +50,17 @@ class LoginActivityViewModelTest {
     }
     @Test
     fun addition_isCorrect() {
+        // BAD TEST CASE JUST TO GET SOME CODE COVERAGE
         Mockito.`when`(serviceMock.getUserDetail(Mockito.anyString())).thenReturn("fake")
         viewModel.enterUsername("username")
+
     }
 
     @Test
     fun testSetPassword() {
+        // BAD TEST CASE JUST TO GET SOME CODE COVERAGE
         viewModel.setPassword("123")
         viewModel.reenterPassword("123")
+        //assertFalse(true)
     }
 }
