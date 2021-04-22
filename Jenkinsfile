@@ -4,15 +4,14 @@ pipeline{
     stages {
         stage('Build'){
              steps {
+				echo "start building......"
                 bat "git clone https://github.com/supernewbie1979/cg_example.git"
-                bat "gradlew assembleRelease"
+                bat "gradlew clean jacocoTestCoverageVerification"
              }
         }
-        stage('install') {
-            steps {
-                bat "mvn install -"
-            }
-        }
+		stage('Install') {
+			echo "start installing......"
+		}
 
     }
 

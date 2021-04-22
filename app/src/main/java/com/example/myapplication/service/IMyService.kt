@@ -1,5 +1,5 @@
 package com.example.myapplication.service
 
 interface IMyService {
-    fun getUserDetail(username: String)
+    fun getUserDetail(username: String): String
 }

@@ -19,7 +19,7 @@ class MyServiceImpl @Inject constructor() : IMyService {
         private const val BASE_URL = "https://api.github.com/"
     }
 
-    override fun getUserDetail(username: String) {
+    override fun getUserDetail(username: String): String {
 
         val httpClient = OkHttpClient.Builder()
 
@@ -45,6 +45,8 @@ class MyServiceImpl @Inject constructor() : IMyService {
             }
 
         })
+
+        return "real"
 
     }
 
