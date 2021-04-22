@@ -10,7 +10,10 @@ pipeline{
              }
         }
 		stage('Install') {
-			echo "start installing......"
+			steps {
+				echo "start installing......"
+			}
+			
 		}
 
     }
