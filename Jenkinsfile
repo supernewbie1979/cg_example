@@ -4,6 +4,7 @@ pipeline{
     stages {
         stage('Build'){
              steps {
+			    echo "${env.BRANCH_NAME}"
 				echo "start building......"
                 bat "gradlew clean jacocoTestCoverageVerification"
              }
