@@ -2,16 +2,32 @@ pipeline{
 	agent any
 	
     stages {
-        stage('Build'){
+	    stage ('Detect build type') {
+			steps {
+				echo "Get build type....."
+			script {
+				if (env.BRANCH_NAME == 'develop' || env.CHANGE_TARGET == 'develop') {
+					env.BUILD_TYPE = 'debug'
+				} else if (env.BRANCH_NAME == 'master' || env.CHANGE_TARGET == 'master') {
+					env.BUILD_TYPE = 'release'
+				}
+			}
+		}
+		
+        stage('Clean & Compile'){
              steps {
-			    echo "${env.BRANCH_NAME}"
-				echo "start building......"
-                bat "gradlew clean jacocoTestCoverageVerification"
+			    
+				echo "start clearning and building......"
+				bat "gradlew clean"
+                bat "gradlew compile${BUILD_TYPE}Sources"
              }
         }
-		stage('Install') {
+		
+		stage('Unit test&Code coverage ') {
 			steps {
-				echo "start installing......"
+				echo "start unit testing......"
+				bat "gradlew test${BUILD_TYPE}UnitTest"
+				bat "gradlew jacocoTestReport"
 			}
 			
 		}
